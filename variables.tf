@@ -85,6 +85,7 @@ variable "config_output_path" {
 variable "kubeconfig_name" {
   description = "Name of kubeconfig file"
   type        = string
+  default     = "my_kubeconfig"
 }
 
 variable "endpoint_private" {
@@ -105,7 +106,7 @@ variable "slackUrl" {
 variable "vpc_id" {
   description = "VPC ID"
   type = string
-  default = "10.0.0.0/16"
+  default = ["10.0.0.0/16"]
 }
 
 variable "create_node_group" {
@@ -143,10 +144,10 @@ variable "node_groups" {
   type = map(object({
     subnets            = list(string)
     instance_type      = list(string)
-    disk_size          = 20
-    desired_capacity   = 2
-    max_capacity       = 3
-    min_capacity       = 1
+    disk_size          = ["20"]
+    desired_capacity   = ["2"]
+    max_capacity       = ["3"]
+    min_capacity       = ["1"]
     ssh_key            = string
     security_group_ids = list(string)
     tags               = map(string)
