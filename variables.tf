@@ -42,6 +42,7 @@ variable "subnets" {
 variable "eks_cluster_version" {
   description = "Kubernetes cluster version in EKS"
   type        = string
+  default     = "1.27"
 }
 
 variable "disk_size" {
