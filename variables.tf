@@ -37,6 +37,7 @@ variable "region" {
 variable "subnets" {
   description = "A list of subnets for worker nodes"
   type        = list(string)
+  default = 2
 }
 
 variable "eks_cluster_version" {
@@ -78,6 +79,7 @@ variable "tags" {
 variable "config_output_path" {
   description = "kubeconfig output path"
   type        = string
+  default = {}
 }
 
 variable "kubeconfig_name" {
@@ -103,6 +105,7 @@ variable "slackUrl" {
 variable "vpc_id" {
   description = "VPC ID"
   type = string
+  default = "10.0.0.0/16"
 }
 
 variable "create_node_group" {
@@ -140,10 +143,10 @@ variable "node_groups" {
   type = map(object({
     subnets            = list(string)
     instance_type      = list(string)
-    disk_size          = number
-    desired_capacity   = number
-    max_capacity       = number
-    min_capacity       = number
+    disk_size          = 20
+    desired_capacity   = 2
+    max_capacity       = 3
+    min_capacity       = 1
     ssh_key            = string
     security_group_ids = list(string)
     tags               = map(string)
